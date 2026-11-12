@@ -1,0 +1,23 @@
+1. Inicio
+2. Se pide el número de clientes a registrar
+3. Se pide el nombre del cliente 
+4. Se pide el apellido del cliente
+5. Se pide la cantidad de libros a comprar por el cliente
+6. Se pide el P/U del o de los libros
+7. Se determina el porcentaje de descuento según la cantidad de libros comprados en una misma compra
+8. Se calcula el subtotal antes del descuento multiplicando la cantidad de libros por el P/U 
+9. Se calcula el monto de descuento multiplicando el subtotal por el porcentaje según la cantidad de libros comprados en una misma compra 
+10. Se calcula el total restando el descuento al subtotal 
+11. Se muestra el total a pagar después de aplicar el descuento
+12. Se suman los totales pagados por todos los clientes
+13. Se cuenta cada cliente registrado para obtener la cantidad total de clientes
+14. Se compara el total pagado para identificar la venta de mayor monto y la venta de menor monto
+15. Se almacena la información detallada de cada compra registrada en arreglos unidimensionales paralelos
+16. Se repite todo el procedimiento desde el paso 3 hasta completar el número de clientes a registrar
+17. Se realiza un reporte final
+18. Se muestra la información detallada de cada compra registrada
+19. Se calcula el promedio de ventas dividiendo la suma de todos los totales pagados entre la cantidad total de clientes
+20. Se muestra el promedio de ventas
+21. Se muestra la venta de mayor monto.
+22. Se muestra la venta de menor monto.
+23. Fin

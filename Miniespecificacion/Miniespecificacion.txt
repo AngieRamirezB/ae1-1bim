@@ -1,0 +1,110 @@
+1. Inicio 
+2.  // Declaración e inicialización de variables
+3. cantidad_clientes, i[1-n]  // Variable para almacenar el tamaño del arreglo
+4. indice, i[0-n]            // Contador para recorrer el arreglo
+5. indice <-- 0
+6.  contador, i[0-n]
+7.  contador <-- 0
+8.  bandera, l
+9.  bandera <-- Verdadero
+10. cantidad_lib, i[1-n]
+11. precio_u, d[0-n]
+12. subtotal, d[0-n]
+13. porcentaje, d[0-n]
+14. descuento, d[0-n]
+15. total_pagar, d[0-n]
+16. suma_ventas, d[0-n]
+17. suma_ventas <-- 0
+18. promedio_ventas, d[0-n]
+19. venta_mayor, d[0-n]
+20. venta_menor, d[0-n]
+21. resumen_clientes, x(2000)[{a-z}, {A-Z}, {0-9}, {, }, {.}, {-}, {$}, {:}, {\n}, {BS}]
+22. resumen_clientes <-- "Listado de Clientes\n"
+23.
+24. // Se pide el número de clientes para los arreglos paralelos
+25. Escribir "Ingrese el número de clientes a registrar:"
+26. Leer cantidad_clientes
+27.
+28. // Declaración de los arreglos unidimensionales paralelos
+29. (nombres(cantidad_clientes), x(50)[{a-z}, {A-Z}, {BS}])
+30. (apellidos(cantidad_clientes), x(50)[{a-z}, {A-Z}, {BS}])
+31. (cantidad_libros(cantidad_clientes), i[1-n])
+32. (precio_unitario(cantidad_clientes), d[0-n])
+33. (precio_total(cantidad_clientes), d[0-n])
+34.
+35. // Ingreso de datos de clientes usando ciclo Mientras 
+36. Mientras bandera == Verdadero entonces
+37.     Escribir "Ingrese el nombre del cliente:"
+38.     Leer nombres[indice]
+39.     Escribir "Ingrese el apellido del cliente:"
+40.     Leer apellidos[indice]
+41.     Escribir "Ingrese la cantidad de libros a comprar:"
+42.     Leer cantidad_lib
+43.     cantidad_libros[indice] <-- cantidad_lib
+44.     Escribir "Ingrese el precio unitario del libro:"
+45.     Leer precio_u
+46.     precio_unitario[indice] <-- precio_u
+47.
+48.     // Cálculo de porcentaje de descuento según cantidad de libros
+49.     Si (cantidad_lib == 1) Entonces
+50.         porcentaje <-- 0.15
+51.     De lo contrario
+52.         Si (cantidad_lib == 2 O cantidad_lib == 3) Entonces
+53.             porcentaje <-- 0.20
+54.         De lo contrario
+55.             Si (cantidad_lib == 4 O cantidad_lib == 5) Entonces
+56.                 porcentaje <-- 0.25
+57.             De lo contrario
+58.                 porcentaje <-- 0.35
+59.             Fin Si
+60.         Fin Si
+61.     Fin Si
+62.
+63.     // Cálculo de subtotal, descuento y total
+64.     subtotal <-- cantidad_lib * precio_u
+65.     descuento <-- subtotal * porcentaje
+66.     total_pagar <-- subtotal - descuento
+67.     precio_total[indice] <-- total_pagar
+68.
+69.     Escribir "Total a pagar después del descuento: $" + total_pagar
+70.
+71.     // Acumulador de ventas y contador de clientes
+72.     suma_ventas <-- suma_ventas + total_pagar
+73.     contador <-- contador + 1
+74.
+75.     // Comparación de venta mayor y menor
+76.     Si (contador == 1) Entonces
+77.         venta_mayor <-- total_pagar
+78.         venta_menor <-- total_pagar
+79.     De lo contrario
+80.         Si (total_pagar > venta_mayor) Entonces
+81.             venta_mayor <-- total_pagar
+82.
+83.         Fin Si
+84.
+85.         Si (total_pagar < venta_menor) Entonces
+86.             venta_menor <-- total_pagar
+87.         Fin Si
+88.     Fin Si
+89.
+90.     // Moverse a la siguiente posición del arreglo y control de avance del bucle
+91.     indice <-- indice + 1
+92.     Si (contador == cantidad_clientes) Entonces
+93.         bandera <-- Falso
+94.     Fin Si
+95. Fin Mientras
+96.
+97. // Recorrido de arreglos para generar el informe de clientes
+98. indice <-- 0
+99. Mientras (indice < cantidad_clientes) Hacer
+100.     resumen_clientes <-- resumen_clientes + "Cliente: " + nombres[indice] + " " + apellidos[indice] + " - Libros: " + cantidad_libros[indice] + " - P/U: $" + precio_unitario[indice] + " - Total: $" + precio_total[indice] + "\n"
+101.     indice <-- indice + 1
+102. Fin Mientras
+103.
+104. // Cálculo de promedio y salida de resultados finales
+105. promedio_ventas <-- suma_ventas / contador
+106. Escribir resumen_clientes
+107. Escribir "Promedio de ventas: $" + promedio_ventas
+108. Escribir "Venta de mayor monto: $" + venta_mayor
+109. Escribir "Venta de menor monto: $" + venta_menor
+110. Fin
