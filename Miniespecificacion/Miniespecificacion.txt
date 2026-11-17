@@ -66,7 +66,7 @@
 66.     total_pagar <-- subtotal - descuento
 67.     precio_total[indice] <-- total_pagar
 68.
-69.     Escribir "Total a pagar después del descuento: $" + total_pagar
+69.     Escribir "Total a pagar después del descuento: $", total_pagar
 70.
 71.     // Acumulador de ventas y contador de clientes
 72.     suma_ventas <-- suma_ventas + total_pagar
@@ -104,7 +104,7 @@
 104. // Cálculo de promedio y salida de resultados finales
 105. promedio_ventas <-- suma_ventas / contador
 106. Escribir resumen_clientes
-107. Escribir "Promedio de ventas: $" + promedio_ventas
-108. Escribir "Venta de mayor monto: $" + venta_mayor
-109. Escribir "Venta de menor monto: $" + venta_menor
+107. Escribir "Promedio de ventas: $", promedio_ventas
+108. Escribir "Venta de mayor monto: $", venta_mayor
+109. Escribir "Venta de menor monto: $", venta_menor
 110. Fin

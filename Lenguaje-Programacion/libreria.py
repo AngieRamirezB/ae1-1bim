@@ -28,12 +28,14 @@ while bandera:
     # Cálculo de porcentaje de descuento según cantidad de libros
     if cantidad_lib == 1:
         porcentaje = 0.15
-    elif cantidad_lib == 2 or cantidad_lib == 3:
-        porcentaje = 0.20
-    elif cantidad_lib == 4 or cantidad_lib == 5:
-        porcentaje = 0.25
     else:
-        porcentaje = 0.35
+        if cantidad_lib == 2 or cantidad_lib == 3:
+            porcentaje = 0.20
+        else:
+            if cantidad_lib == 4 or cantidad_lib == 5:
+                porcentaje = 0.25
+            else:
+                porcentaje = 0.35
 
     # Cálculo de subtotal, descuento y total
     subtotal = cantidad_lib * precio_u
