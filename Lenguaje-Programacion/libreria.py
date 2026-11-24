@@ -1,16 +1,11 @@
 # Inicialización de variables
-resumen_clientes = "Listado de Clientes\n"
-indice = 0
 contador = 0
-bandera = True
 suma_ventas = 0.0
-venta_mayor = 0.0
-venta_menor = 0.0
 
 # Se pide el número de clientes a registrar
 cantidad_clientes = int(input("Ingrese el número de clientes a registrar: "))
 
-# Uso de listas paralelas para almacenar datos de los clientes
+# Uso de Arreglos para almacenar datos de los clientes
 nombres = []
 apellidos = []
 cantidad_libros = []
@@ -18,7 +13,7 @@ precio_unitario = []
 precio_total = []
 
 # Bucle para ingreso de datos
-while bandera:
+while contador < cantidad_clientes:
     print("\nIngrese la información del cliente:")
     nombre = input("Nombre del cliente: ")
     apellido = input("Apellido del cliente: ")
@@ -55,36 +50,33 @@ while bandera:
     suma_ventas = suma_ventas + total_pagar
     contador = contador + 1
 
-    # Comparación de venta mayor y menor
-    if contador == 1:
-        venta_mayor = total_pagar
-        venta_menor = total_pagar
-    else:
-        if total_pagar > venta_mayor:
-            venta_mayor = total_pagar
-        if total_pagar < venta_menor:
-            venta_menor = total_pagar
-
-    # Siguiente cliente y verificar si el ciclo debe terminar
+# Búsqueda de venta mayor y menor
+venta_mayor = precio_total[0]
+venta_menor = precio_total[0]
+indice = 1
+while indice < cantidad_clientes:
+    if precio_total[indice] > venta_mayor:
+        venta_mayor = precio_total[indice]
+    if precio_total[indice] < venta_menor:
+        venta_menor = precio_total[indice]
     indice = indice + 1
-    if contador == cantidad_clientes:
-        bandera = False
 
-# Recorrido de listas para generar el informe de clientes
+# Reporte final de clientes
+print('\nREPORTE FINAL DE CLIENTES')
+
 indice = 0
 while indice < cantidad_clientes:
-    resumen_clientes = (
-        resumen_clientes
-        + f"Cliente: {nombres[indice]} {apellidos[indice]} - "
-        + f"Libros: {cantidad_libros[indice]} - "
-        + f"P/U: ${precio_unitario[indice]:.2f} - "
-        + f"Total: ${precio_total[indice]:.2f}\n"
-    )
+    print(f'Cliente: {indice + 1}')
+    print(f'Nombre: {nombres[indice]}')
+    print(f'Apellido: {apellidos[indice]}')
+    print(f'Cantidad de libros: {cantidad_libros[indice]}')
+    print(f'Precio unitario: {precio_unitario[indice]:.2f}')
+    print(f'Total a pagar: {precio_total[indice]:.2f}')
     indice = indice + 1
 
 # Cálculo de promedio y salida de resultados finales
 promedio_ventas = suma_ventas / contador
-print("\n" + resumen_clientes)
-print(f"Promedio de ventas: ${promedio_ventas:.2f}")
-print(f"Venta de mayor monto: ${venta_mayor:.2f}")
-print(f"Venta de menor monto: ${venta_menor:.2f}")
+print('\nRESUMEN DE VENTAS')
+print(f'Promedio de ventas: {promedio_ventas:.2f}')
+print(f'Venta de mayor monto: {venta_mayor:.2f}')
+print(f'Venta de menor monto: {venta_menor:.2f}')
